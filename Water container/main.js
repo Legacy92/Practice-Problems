@@ -14,8 +14,34 @@
 // 10. Assign the sum to the answer of the question
 
 
-var walls  = [3,0,0,2,0,4];
+var walls = [3, 0, 0, 2, 0, 4];
 
-function firstNumber(wall){
-    
+function firstNumbers(wall) {
+    for (i = 0; i < wall.length; i++) {
+        if (wall[i] > 0) {
+            var firstNum = wall[i];
+            var firstNumIndex = i;
+            return {
+                firstNum: firstNum,
+                firstNumIndex: firstNumIndex
+            };
+        }
+    }
 }
+
+var firstSet = firstNumbers(walls);
+var firstNum = firstSet.firstNum;
+var firstNumIndex = firstSet.firstNumIndex;
+
+function secondNumbers(wall) {
+    for (i = firstNumIndex; i < wall.length; i++) {
+        if (wall[i] > firstNum) {
+            var secondNum = wall[i];
+            var secondNumIndex = i;
+            console.log(secondNum);
+            return secondNum;
+        }
+    }
+}
+
+secondNumbers(walls);
